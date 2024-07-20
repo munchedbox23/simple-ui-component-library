@@ -25,7 +25,7 @@ export const Input = forwardRef<HTMLInputElement, TInputProps>(
           type={
             type === "password" ? (showPassword ? "text" : "password") : type
           }
-          className={`${inputStyles.input} ${className} ${variant === "rounded" ? "rounded-xl" : "rounded-none"}`}
+          className={`${inputStyles.input} ${className} ${variant === "rounded" ? "rounded-lg" : "rounded-none"}`}
           {...props}
         />
         {type === "password" && (
