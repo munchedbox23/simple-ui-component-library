@@ -8,6 +8,43 @@ const meta: Meta<typeof Text> = {
     layout: "centered",
   },
   tags: ["autodocs"],
+  argTypes: {
+    size: {
+      type: "string",
+      description: "Варианты размера текста",
+      defaultValue: "base",
+      options: ["base", "sm", "lg", "xl", "2xl", "3xl"],
+      control: {
+        type: "select",
+      },
+    },
+    weight: {
+      type: "string",
+      description: "Варианты веса шрифта",
+      defaultValue: "normal",
+      options: ["thin", "normal", "medium", "semibold", "bold", "black"],
+      control: {
+        type: "select",
+      },
+    },
+    align: {
+      type: "string",
+      description: "Варианты расположения текста",
+      defaultValue: "left",
+      options: ["left", "center", "right"],
+      control: {
+        type: "inline-radio",
+      },
+    },
+    underline: {
+      type: "string",
+      description: "Возможность добавлять нижний элемент",
+      defaultValue: "false",
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 };
 
 export default meta;
