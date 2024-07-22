@@ -1,35 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SelectBar } from "./Select";
-import "../../index.css";
+import CustomSelect from "./Select";
 
-const meta: Meta<typeof SelectBar> = {
-  title: "Components/SelectBar",
-  component: SelectBar,
+const meta: Meta<typeof CustomSelect> = {
+  title: "Components/CustomSelect",
+  component: CustomSelect,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
   argTypes: {
-    size: {
-      type: "string",
-      options: ["sm", "md", "lg"],
-      control: {
-        type: "select",
-      },
-      description: "Размер селекта",
-    },
-    variant: {
-      options: ["default", "primary", "secondary"],
-      control: {
-        type: "select",
-      },
-      description: "Вариант оформления селекта",
-    },
     options: {
-      control: {
-        type: "object",
-      },
-      description: "Опции для выбора",
+      control: { type: "object" },
+      description: "Массив опций для выбора",
+    },
+    label: {
+      control: { type: "text" },
+      description: "Текст метки",
+    },
+    onChange: {
+      action: "changed",
+      description: "Функция, вызываемая при изменении значения",
+    },
+    value: {
+      control: { type: "object" },
+      description: "Текущее выбранное значение",
+    },
+    size: {
+      control: { type: "select", options: ["sm", "md", "lg"] },
+      description: "Размер компонента",
+    },
+    width: {
+      control: { type: "number" },
+      description: "Ширина компонента",
     },
   },
 };
@@ -39,36 +41,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
+    options: ["Option 1", "Option 2", "Option 3"],
+    label: "Select an option",
+    value: [],
     size: "md",
-    variant: "default",
-  },
-};
-
-export const Primary: Story = {
-  args: {
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
-    size: "md",
-    variant: "primary",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
-    size: "md",
-    variant: "secondary",
+    width: 300,
   },
 };

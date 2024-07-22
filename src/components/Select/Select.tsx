@@ -1,52 +1,102 @@
-import { ComponentProps, forwardRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import * as React from "react";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import { cva } from "class-variance-authority";
 import cn from "classnames";
-import { motion } from "framer-motion";
 
-type TSelectBarProps = ComponentProps<"select"> &
-  VariantProps<typeof selectBarStyles> & {
-    options: { label: string; value: string }[];
-    size?: "sm" | "md" | "lg";
-    variant?: "default" | "primary" | "secondary";
-  };
+interface CustomSelectProps {
+  options: (string | number)[];
+  label: string;
+  onChange: (value: string[]) => void;
+  value: string[];
+  size?: "sm" | "md" | "lg";
+  width?: number;
+}
 
-const selectBarStyles = cva(
+const selectStyles = cva(
   "w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
   {
     variants: {
       size: {
-        sm: "px-2 py-1 text-sm",
-        md: "px-4 py-2 text-base",
-        lg: "px-6 py-3 text-lg",
-      },
-      variant: {
-        default: "bg-white text-black border border-gray-300",
-        primary: "bg-blue-500 text-white border border-blue-500",
-        secondary: "bg-gray-500 text-white border border-gray-500",
+        sm: "max-w-xs",
+        md: "max-w-sm",
+        lg: "max-w-md",
       },
     },
     defaultVariants: {
       size: "md",
-      variant: "default",
     },
   }
 );
-export const SelectBar = forwardRef<HTMLSelectElement, TSelectBarProps>(
-  ({ options, size, variant, className, ...props }, ref) => {
-    return (
-      <select
-        ref={ref}
-        className={cn(selectBarStyles({ size, variant }), className)}
-        {...props}
+
+const CustomSelect: React.FC<CustomSelectProps> = ({
+  options,
+  label,
+  onChange,
+  value,
+  size = "md",
+  width = 300,
+}) => {
+  const [isFocused, setIsFocused] = React.useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+    const {
+      target: { value },
+    } = event;
+    onChange(typeof value === "string" ? value.split(",") : value);
+  };
+
+  return (
+    <FormControl sx={{ width: width }}>
+      <InputLabel
+        id="custom-select-label"
+        shrink={value.length > 0 || isFocused}
+        sx={{
+          transform:
+            isFocused || value.length > 0
+              ? "translate(14px, -9px) scale(0.75)"
+              : "translate(14px, 6px) scale(1)",
+          transition: "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
+        }}
+      >
+        {label}
+      </InputLabel>
+      <Select
+        labelId="custom-select-label"
+        id="custom-select"
+        multiple
+        value={value}
+        onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        input={<OutlinedInput label={label} />}
+        MenuProps={{
+          PaperProps: {
+            style: {
+              maxHeight: 28 * 4.5 + 8,
+              width: isMobile ? "200px" : isTablet ? "30%" : "160px",
+              maxWidth: isMobile ? "200px" : isTablet ? "900px" : "auto",
+            },
+          },
+        }}
+        className={cn(selectStyles({ size }), "h-9")}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+          <MenuItem key={option} value={option} sx={{ minWidth: 150 }}>
+            {option}
+          </MenuItem>
         ))}
-      </select>
-    );
-  }
-);
+      </Select>
+    </FormControl>
+  );
+};
 
-export const MSelectBar = motion(SelectBar);
+export default CustomSelect;
