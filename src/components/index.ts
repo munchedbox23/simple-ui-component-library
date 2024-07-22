@@ -5,3 +5,4 @@ export * from "./Avatar/Avatar";
 export * from "./Button/Button";
 export * from "./Text/Text";
 export * from "./Select/Select";
+export * from "./Stack/Stack";
