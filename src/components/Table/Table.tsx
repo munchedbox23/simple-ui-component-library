@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { useTable, useSortBy, Column, usePagination } from "react-table";
 import {
   ArrowDropDown,

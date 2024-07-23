@@ -26,7 +26,8 @@ const meta: Meta<typeof CustomSelect> = {
       description: "Текущее выбранное значение",
     },
     size: {
-      control: { type: "select", options: ["sm", "md", "lg"] },
+      options: ["sm", "md", "lg"],
+      control: { type: "select" },
       description: "Размер компонента",
     },
     width: {
