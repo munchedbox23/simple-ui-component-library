@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Hourglass } from "./Hourglass";
 
 const meta: Meta<typeof Hourglass> = {
-  title: "Components/Hourglass",
+  title: "Other/Hourglass",
   component: Hourglass,
   parameters: {
     layout: "centered",

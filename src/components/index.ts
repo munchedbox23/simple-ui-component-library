@@ -7,3 +7,4 @@ export * from "./Text/Text";
 export * from "./Select/Select";
 export * from "./Stack/Stack";
 export * from "./Table/Table";
+export * from "./Hourglass/Hourglass";
