@@ -58,6 +58,7 @@ export const Avatar = forwardRef<
     return (
       <div
         ref={ref}
+        data-testid="avatar"
         className={cn(avatarStyles({ size, square, noBorder }), className)}
         {...otherProps}
       >
