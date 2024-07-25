@@ -9,7 +9,7 @@ export const Form: FC<TFormProps> = ({ onSubmit }) => {
   return (
     <form
       onSubmit={onSubmit}
-      className="border-2 border-gray-300 rounded-xl px-8 py-12"
+      className="border-2 border-gray-300 rounded-xl px-8 py-12 shadow-md"
     >
       <Stack direction="column" align="center" justify="center">
         <Text as="h2" weight="bold" align="center" size="3xl" className="mb-2">
