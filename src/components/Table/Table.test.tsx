@@ -1,0 +1,40 @@
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Table } from "./Table";
+import "@testing-library/jest-dom";
+
+const columns = [
+  { Header: "Name", accessor: "name" },
+  { Header: "Age", accessor: "age" },
+];
+
+const data = [
+  { name: "John", age: 30 },
+  { name: "Jane", age: 25 },
+];
+
+describe("Table component", () => {
+  it("renders without crashing", () => {
+    render(<Table columns={columns} data={data} />);
+  });
+
+  it("displays the correct data", () => {
+    render(<Table columns={columns} data={data} />);
+    expect(screen.getByText("John")).toBeInTheDocument();
+    expect(screen.getByText("Jane")).toBeInTheDocument();
+    expect(screen.getByText("30")).toBeInTheDocument();
+    expect(screen.getByText("25")).toBeInTheDocument();
+  });
+
+  it("sorts the data correctly", () => {
+    render(<Table columns={columns} data={data} />);
+    fireEvent.click(screen.getByText("Name"));
+    let rows = screen.getAllByRole("row");
+    expect(rows[1]).toHaveTextContent("Jane");
+    expect(rows[2]).toHaveTextContent("John");
+
+    fireEvent.click(screen.getByText("Name"));
+    rows = screen.getAllByRole("row");
+    expect(rows[1]).toHaveTextContent("John");
+    expect(rows[2]).toHaveTextContent("Jane");
+  });
+});

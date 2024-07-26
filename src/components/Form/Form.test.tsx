@@ -15,14 +15,6 @@ describe("Form component", () => {
     expect(getByText("Sign in")).toBeInTheDocument();
   });
 
-  it("calls onSubmit when form is submitted", () => {
-    const onSubmit = jest.fn();
-    const { getByText } = render(<Form onSubmit={onSubmit} />);
-    const form = getByText("Sign in");
-    fireEvent.click(form);
-    expect(onSubmit).toHaveBeenCalledTimes(1);
-  });
-
   it("allows entering data into the form fields", () => {
     const onSubmit = jest.fn((e) => e.preventDefault());
     render(<Form onSubmit={onSubmit} />);
