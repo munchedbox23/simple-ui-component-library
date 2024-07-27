@@ -1,7 +1,14 @@
 {
-  "name": "simple-ui-component-library",
-  "version": "0.1.0",
+  "name": "@munchedbox/simple-ui-kit",
+  "author": "Egor Rubtsov",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/munchedbox"
+  },
+  "version": "1.0.1",
   "private": true,
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@emotion/react": "^11.12.0",
     "@emotion/styled": "^11.12.0",

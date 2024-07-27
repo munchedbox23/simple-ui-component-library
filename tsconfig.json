@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "./build/",
     "allowJs": true,
+    "declaration": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
@@ -21,5 +23,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "declarations.d.ts"]
+  "include": ["src", "declarations.d.ts"],
+  "exclude": ["node_modules", "build"]
 }

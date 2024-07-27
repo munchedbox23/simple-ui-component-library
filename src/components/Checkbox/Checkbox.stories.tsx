@@ -37,7 +37,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: "Check me",
-    size: "md",
     variant: "default",
   },
 };
@@ -45,7 +44,6 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     label: "Check me",
-    size: "sm",
     variant: "default",
   },
 };
@@ -53,7 +51,6 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     label: "Check me",
-    size: "lg",
     variant: "default",
   },
 };
@@ -61,7 +58,6 @@ export const Large: Story = {
 export const Primary: Story = {
   args: {
     label: "Check me",
-    size: "md",
     variant: "primary",
   },
 };
@@ -69,7 +65,6 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: "Check me",
-    size: "md",
     variant: "secondary",
   },
 };

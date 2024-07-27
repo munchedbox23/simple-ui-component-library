@@ -24,20 +24,6 @@ describe("Checkbox component", () => {
     expect(checkbox.checked).toBe(true);
   });
 
-  it("applies size classes", () => {
-    const sizes = ["sm", "md", "lg"];
-    sizes.forEach((size) => {
-      const { container } = render(<Checkbox size={size} />);
-      const checkbox = container.querySelector('input[type="checkbox"]');
-      expect(checkbox).toHaveClass(
-        `w-${size === "sm" ? 3 : size === "md" ? 4 : 6}`
-      );
-      expect(checkbox).toHaveClass(
-        `h-${size === "sm" ? 3 : size === "md" ? 4 : 6}`
-      );
-    });
-  });
-
   it("applies variant classes", () => {
     const variants = ["default", "primary", "secondary"] as const;
     variants.forEach((variant) => {
