@@ -50,7 +50,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+<<<<<<< HEAD
     size: "lg",
+=======
+    size: "md",
+>>>>>>> origin/main
     square: false,
     noBorder: false,
     src: "https://img.freepik.com/free-photo/3d-fox-cartoon-illustration_23-2151395236.jpg?w=740&t=st=1721590681~exp=1721591281~hmac=f146356c07aded7bec3361406767ab53d21239f89a12532e6d903d4794e50d48",

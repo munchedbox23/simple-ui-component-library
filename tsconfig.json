@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+<<<<<<< HEAD
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -42,4 +43,30 @@
   },
   "include": ["src", "declarations.d.ts"],
   "exclude": ["node_modules", "dist"]
+=======
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "./build/",
+    "allowJs": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components": ["src/components"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "declarations.d.ts"],
+  "exclude": ["node_modules", "build"]
+>>>>>>> origin/main
 }
