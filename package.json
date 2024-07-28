@@ -1,8 +1,18 @@
 {
   "name": "@munchedbox/simple-ui-component-library",
+  "author": "Egor Rubtsov",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/munchedbox"
+  },
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "files": [
+    "/dist"
+  ],
   "license": "ISC",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -21,7 +31,6 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "framer-motion": "^11.3.19",
-    "react-dom": "^18.3.1",
     "react-table": "^7.8.0",
     "vite-tsconfig-paths": "^4.3.2"
   },
@@ -64,6 +73,12 @@
     "vite-plugin-dts": "^3.7.2"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.3.1"
+  },
+  "homepage": "https://github.com/munchedbox23/simple-ui-component-library#readme",
+  "description": "munchedbox component library for modern web apps",
+  "directories": {
+    "test": "test"
   }
 }
