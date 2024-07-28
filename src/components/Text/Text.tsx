@@ -2,13 +2,8 @@ import cn from "classnames";
 import { VariantProps, cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import {
-<<<<<<< HEAD
   PolymorphicRef,
   PolymorphicComponentPropsWithRef,
-=======
-  PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
->>>>>>> origin/main
 } from "@/types/text-types";
 
 const textStyles = cva("w-full", {
