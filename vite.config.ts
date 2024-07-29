@@ -15,11 +15,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "./src/index.ts"),
-      name: "munchedbox-ui-kit",
+      name: "munchedbox-ui-component-library",
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "tailwind.css"],
       output: {
         globals: {
           react: "React",
@@ -27,11 +27,12 @@ export default defineConfig({
         },
       },
     },
+    cssCodeSplit: true,
   },
-  plugins: [react(), dts({ rollupTypes: true })],
   css: {
     postcss: {
       plugins: [tailwindcss, autoprefixer],
     },
   },
+  plugins: [react(), dts({ rollupTypes: true })],
 });

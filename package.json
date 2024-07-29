@@ -1,15 +1,14 @@
 {
-  "name": "@munchedbox/simple-ui-component-library",
+  "name": "@munchedbox23/simple-ui-component-library",
   "author": "Egor Rubtsov",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/munchedbox"
+    "registry": "https://npm.pkg.github.com/munchedbox23"
   },
-  "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "unpkg": "dist/index.umd.js",
   "files": [
     "/dist"
   ],
