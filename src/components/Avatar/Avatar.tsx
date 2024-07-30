@@ -1,42 +1,46 @@
 import { forwardRef, ComponentProps, PropsWithChildren } from "react";
-import { cva, VariantProps } from "class-variance-authority";
-import cn from "classnames";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
-type TAvatarProps = ComponentProps<"div"> &
-  VariantProps<typeof avatarStyles> & {
-    alt?: string;
-    noBorder?: boolean;
-    size: "sm" | "md" | "lg";
-    square?: boolean;
-    src?: string;
-  };
+type TAvatarProps = ComponentProps<"div"> & {
+  alt?: string;
+  noBorder?: boolean;
+  size: "sm" | "md" | "lg";
+  square?: boolean;
+  src?: string;
+};
 
-const avatarStyles = cva(
-  "inline-block box-border object-contain overflow-hidden",
-  {
-    variants: {
-      size: {
-        sm: "h-8 w-8",
-        md: "h-12 w-12",
-        lg: "h-16 w-16",
-      },
-      square: {
-        true: "rounded-none",
-        false: "rounded-full",
-      },
-      noBorder: {
-        true: "border-0",
-        false: "border-2 border-primary-500 border-primary-600 ",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-      square: false,
-      noBorder: false,
-    },
-  }
-);
+const sizeStyles = {
+  sm: "height: 2rem; width: 2rem;",
+  md: "height: 3rem; width: 3rem;",
+  lg: "height: 4rem; width: 4rem;",
+};
+
+const borderRadiusStyles = {
+  true: "border-radius: 0;",
+  false: "border-radius: 9999px;",
+};
+
+const borderStyles = {
+  true: "border: 0;",
+  false: "border: 2px solid #007ac0;",
+};
+
+const StyledAvatar = styled.div<TAvatarProps>`
+  display: inline-block;
+  box-sizing: border-box;
+  object-fit: contain;
+  overflow: hidden;
+  ${({ size }) => sizeStyles[size]}
+  ${({ square }) => borderRadiusStyles[square ? "true" : "false"]}
+  ${({ noBorder }) => borderStyles[noBorder ? "true" : "false"]}
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
 
 export const Avatar = forwardRef<
   HTMLDivElement,
@@ -56,18 +60,17 @@ export const Avatar = forwardRef<
     ref
   ) => {
     return (
-      <div
+      <StyledAvatar
         ref={ref}
         data-testid="avatar"
-        className={cn(avatarStyles({ size, square, noBorder }), className)}
+        className={className}
+        size={size}
+        square={square}
+        noBorder={noBorder}
         {...otherProps}
       >
-        {src ? (
-          <img src={src} alt={alt} className="w-full h-full object-contain" />
-        ) : (
-          children
-        )}
-      </div>
+        {src ? <StyledImage src={src} alt={alt} /> : children}
+      </StyledAvatar>
     );
   }
 );

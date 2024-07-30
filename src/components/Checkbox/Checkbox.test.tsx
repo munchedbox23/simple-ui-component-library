@@ -24,13 +24,24 @@ describe("Checkbox component", () => {
     expect(checkbox.checked).toBe(true);
   });
 
-  it("applies variant classes", () => {
+  it("applies variant styles", () => {
     const variants = ["default", "primary", "secondary"] as const;
     variants.forEach((variant) => {
       const { container } = render(<Checkbox variant={variant} />);
       const checkbox = container.querySelector('input[type="checkbox"]');
-      expect(checkbox).toHaveClass(
-        `checked:bg-${variant === "default" ? "blue" : variant === "primary" ? "green" : "red"}-500`
+      expect(checkbox).toHaveStyle(
+        `background-color: ${variant === "default" ? "#3b82f6" : variant === "primary" ? "#10b981" : "#ef4444"};`
+      );
+    });
+  });
+
+  it("applies size styles", () => {
+    const sizes = ["sm", "md", "lg"] as const;
+    sizes.forEach((size) => {
+      const { container } = render(<Checkbox size={size} />);
+      const checkbox = container.querySelector('input[type="checkbox"]');
+      expect(checkbox).toHaveStyle(
+        `width: ${size === "sm" ? "0.75rem" : size === "md" ? "1rem" : "1.5rem"}; height: ${size === "sm" ? "0.75rem" : size === "md" ? "1rem" : "1.5rem"};`
       );
     });
   });

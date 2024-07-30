@@ -1,55 +1,64 @@
-import { ComponentProps, forwardRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
-import cn from "classnames";
+import React, { forwardRef } from "react";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
-type TCheckboxProps = ComponentProps<"input"> &
-  VariantProps<typeof checkboxStyles> & {
-    label?: string;
-    size?: "sm" | "md" | "lg";
-    variant?: "default" | "primary" | "secondary";
-  };
+type TCheckboxProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "label" | "size" | "variant"
+> & {
+  label?: string;
+  size?: keyof typeof sizeStyles;
+  variant?: "default" | "primary" | "secondary";
+};
 
-const checkboxStyles = cva(
-  [
-    "appearance-none",
-    "border",
-    "border-gray-300",
-    "rounded",
-    "focus:outline-none",
-  ],
-  {
-    variants: {
-      size: {
-        sm: "w-3 h-3",
-        md: "w-4 h-4",
-        lg: "w-6 h-6",
-      },
-      variant: {
-        default: "checked:bg-blue-500",
-        primary: "checked:bg-green-500",
-        secondary: "checked:bg-red-500",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-      variant: "default",
-    },
+const sizeStyles = {
+  sm: "width: 0.75rem; height: 0.75rem;",
+  md: "width: 1rem; height: 1rem;",
+  lg: "width: 1.5rem; height: 1.5rem;",
+};
+
+const variantStyles = {
+  default: "background-color: #3b82f6;",
+  primary: "background-color: #10b981;",
+  secondary: "background-color: #ef4444;",
+};
+
+const StyledCheckbox = styled.input<TCheckboxProps>`
+  appearance: none;
+  border: 1px solid #d1d5db; // gray-300
+  border-radius: 0.25rem;
+  outline: none;
+  ${({ size = "md" }) => sizeStyles[size]}
+  ${({ variant = "default" }) => variantStyles[variant]}
+  &:checked {
+    ${({ variant = "default" }) => variantStyles[variant]}
   }
-);
+`;
+
+const StyledLabel = styled.label`
+  display: inline-flex;
+  align-items: center;
+`;
+
+const StyledSpan = styled.span`
+  margin-left: 0.5rem;
+  color: #374151; // gray-700
+`;
 
 export const Checkbox = forwardRef<HTMLInputElement, TCheckboxProps>(
-  ({ label, size, variant, className, ...props }, ref) => {
+  ({ label, size = "md", variant = "default", className, ...props }, ref) => {
     return (
-      <label className="inline-flex items-center">
-        <input
+      <StyledLabel>
+        <StyledCheckbox
           ref={ref}
           type="checkbox"
-          className={cn(checkboxStyles({ size, variant }), className)}
+          size={size}
+          variant={variant}
+          className={className}
           {...props}
         />
-        {label && <span className="ml-2 text-gray-700">{label}</span>}
-      </label>
+        {label && <StyledSpan>{label}</StyledSpan>}
+      </StyledLabel>
     );
   }
 );

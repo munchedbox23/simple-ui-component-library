@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "./Checkbox";
-import "../../index.css";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Components/Checkbox",
@@ -44,6 +43,7 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     label: "Check me",
+    size: "sm",
     variant: "default",
   },
 };
@@ -51,6 +51,7 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     label: "Check me",
+    size: "lg",
     variant: "default",
   },
 };

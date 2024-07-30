@@ -10,14 +10,14 @@ type TButtonProps = ComponentProps<"button"> & {
 
 const sizeStyles = {
   sm: "padding: 0.5rem 1rem; font-size: 0.875rem;",
-  md: "padding: 1rem 2rem; font-size: 1rem;",
-  lg: "padding: 1.5rem 3rem; font-size: 1.125rem;",
+  md: "padding: 1rem 1.5rem; font-size: 1rem;",
+  lg: "padding: 1.2rem 2rem; font-size: 1.125rem;",
 };
 
 const variantStyles = {
   primary: "background-color: #007ac0; color: white;",
   secondary:
-    "border: 2px solid #007ac0; color: #0ea5e9; background-color: white;",
+    "border: 2px solid #0055cc; color: #0ea5e9; background-color: white;",
   ghost: "color: #0ea5e9; background-color: white; transition: all 0.3s ease;",
 };
 
