@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
-import "../../index.css";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -10,9 +9,9 @@ const meta: Meta<typeof Button> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    label: {
+    children: {
       type: "string",
-      description: "Текст кнопки",
+      description: "Содержимое кнопки (текст или другие элементы)",
     },
     type: {
       type: "string",
@@ -47,23 +46,26 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     type: "button",
-    label: "Click me",
+    children: "Click me",
     variant: "primary",
+    size: "md",
   },
 };
 
 export const Secondary: Story = {
   args: {
     type: "button",
-    label: "Click me",
+    children: "Click me",
     variant: "secondary",
+    size: "md",
   },
 };
 
 export const Ghost: Story = {
   args: {
     type: "button",
-    label: "Click me",
+    children: "Click me",
     variant: "ghost",
+    size: "md",
   },
 };

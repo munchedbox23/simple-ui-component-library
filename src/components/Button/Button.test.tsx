@@ -5,67 +5,99 @@ import "@testing-library/jest-dom";
 describe("Button component", () => {
   it("button should render correctly", () => {
     render(
-      <Button type="button" size="md" variant="primary" label="Click me" />
+      <Button type="button" size="md" variant="primary">
+        Click me
+      </Button>
     );
     expect(screen.getByText(/Click me/)).toBeInTheDocument();
   });
 
   it("renders with primary variant", () => {
     render(
-      <Button label="Click me" size="md" type="button" variant="primary" />
+      <Button size="md" type="button" variant="primary">
+        Click me
+      </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass("bg-primary-500 text-white");
+    expect(buttonElement).toHaveStyle(
+      "background-color: #007ac0; color: white;"
+    );
   });
 
   it("renders with secondary variant", () => {
     render(
-      <Button label="Click me" size="md" type="button" variant="secondary" />
+      <Button size="md" type="button" variant="secondary">
+        Click me
+      </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass(
-      "text-primary-500 border-primary-500 bg-white"
+    expect(buttonElement).toHaveStyle(
+      "border: 2px solid #007ac0; color: #0ea5e9; background-color: white;"
     );
   });
 
   it("renders with ghost variant", () => {
-    render(<Button label="Click me" size="md" type="button" variant="ghost" />);
+    render(
+      <Button size="md" type="button" variant="ghost">
+        Click me
+      </Button>
+    );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass("text-sky-500 bg-white");
+    expect(buttonElement).toHaveStyle(
+      "color: #0ea5e9; background-color: white; transition: all 0.3s ease;"
+    );
   });
 
   it("renders with small size", () => {
     render(
-      <Button label="Click me" size="sm" type="button" variant="primary" />
+      <Button size="sm" type="button" variant="primary">
+        Click me
+      </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass("px-2 py-1 text-sm");
+    expect(buttonElement).toHaveStyle(
+      "padding: 0.5rem 1rem; font-size: 0.875rem;"
+    );
   });
 
   it("renders with medium size", () => {
     render(
-      <Button label="Click me" size="md" type="button" variant="primary" />
+      <Button size="md" type="button" variant="primary">
+        Click me
+      </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass("px-4 py-2 text-base");
+    expect(buttonElement).toHaveStyle("padding: 1rem 2rem; font-size: 1rem;");
   });
 
   it("renders with large size", () => {
     render(
-      <Button label="Click me" size="lg" type="button" variant="primary" />
+      <Button size="lg" type="button" variant="primary">
+        Click me
+      </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveClass("px-6 py-3 text-lg");
+    expect(buttonElement).toHaveStyle(
+      "padding: 1.5rem 3rem; font-size: 1.125rem;"
+    );
   });
 
   it("renders with submit type", () => {
-    render(<Button label="Submit" size="md" type="submit" variant="primary" />);
+    render(
+      <Button size="md" type="submit" variant="primary">
+        Submit
+      </Button>
+    );
     const buttonElement = screen.getByText(/Submit/i);
     expect(buttonElement).toHaveAttribute("type", "submit");
   });
 
   it("renders with reset type", () => {
-    render(<Button label="Reset" size="md" type="reset" variant="primary" />);
+    render(
+      <Button size="md" type="reset" variant="primary">
+        Reset
+      </Button>
+    );
     const buttonElement = screen.getByText(/Reset/i);
     expect(buttonElement).toHaveAttribute("type", "reset");
   });

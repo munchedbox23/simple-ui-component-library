@@ -2,8 +2,6 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import tailwindcss from "tailwindcss";
-import autoprefixer from "autoprefixer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,19 +17,13 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "tailwind.css"],
+      external: ["react", "react-dom"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
         },
       },
-    },
-    cssCodeSplit: true,
-  },
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
     },
   },
   plugins: [react(), dts({ rollupTypes: true })],
