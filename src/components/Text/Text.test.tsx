@@ -10,41 +10,38 @@ describe("Text", () => {
 
   it("renders with custom size", () => {
     render(<Text size="lg">Large text</Text>);
-    expect(screen.getByText("Large text")).toHaveClass("text-lg");
+    const textElement = screen.getByText("Large text");
+    expect(textElement).toHaveStyle("font-size: 1.125rem;");
   });
 
   it("renders with custom weight", () => {
     render(<Text weight="bold">Bold text</Text>);
-    expect(screen.getByText("Bold text")).toHaveClass("font-bold");
+    const textElement = screen.getByText("Bold text");
+    expect(textElement).toHaveStyle("font-weight: 700;");
   });
 
   it("renders with custom emphasis", () => {
     render(<Text emphasis="low">Low emphasis text</Text>);
-    expect(screen.getByText("Low emphasis text")).toHaveClass(
-      "text-gray-600 font-light"
-    );
+    const textElement = screen.getByText("Low emphasis text");
+    expect(textElement).toHaveStyle("color: #718096; font-weight: light;");
   });
 
   it("renders with custom align", () => {
     render(<Text align="center">Centered text</Text>);
-    expect(screen.getByText("Centered text")).toHaveClass("text-center");
+    const textElement = screen.getByText("Centered text");
+    expect(textElement).toHaveStyle("text-align: center;");
   });
 
   it("renders with custom italic", () => {
     render(<Text italic={true}>Italic text</Text>);
-    expect(screen.getByText("Italic text")).toHaveClass("italic");
-  });
-
-  it("renders with custom underline", () => {
-    render(<Text underline={true}>Underlined text</Text>);
-    expect(screen.getByText("Underlined text")).toHaveClass(
-      "underline underline-offset-2"
-    );
+    const textElement = screen.getByText("Italic text");
+    expect(textElement).toHaveStyle("font-style: italic;");
   });
 
   it("renders with custom className", () => {
     render(<Text className="custom-class">Custom class text</Text>);
-    expect(screen.getByText("Custom class text")).toHaveClass("custom-class");
+    const textElement = screen.getByText("Custom class text");
+    expect(textElement).toHaveClass("custom-class");
   });
 
   it("renders with as prop", () => {

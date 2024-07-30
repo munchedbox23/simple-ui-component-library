@@ -1,63 +1,55 @@
-import { Stack, Button, Input, Text } from "..";
 import { FC, FormEvent } from "react";
+import styled from "styled-components";
+import { Stack, Button, Input, Text } from "..";
 
 type TFormProps = {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 };
 
+const StyledForm = styled.form`
+  border: 2px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+`;
+
+const StyledText = styled(Text)`
+  margin-bottom: 0.5rem;
+`;
+
+const StyledInput = styled(Input)`
+  margin-bottom: 1rem;
+`;
+
+const StyledButton = styled(Button)`
+  margin-top: 0.5rem;
+`;
+
 export const Form: FC<TFormProps> = ({ onSubmit }) => {
   return (
-    <form
-      onSubmit={onSubmit}
-      className="border-2 border-gray-300 rounded-xl px-8 py-12 shadow-md"
-    >
+    <StyledForm onSubmit={onSubmit}>
       <Stack direction="column" align="center" justify="center">
-        <Text as="h2" weight="bold" align="center" size="3xl" className="mb-2">
+        <StyledText as="h2" weight="bold" align="center" size="3xl">
           Login
-        </Text>
-        <Text
-          as="span"
-          emphasis={"low"}
-          size={"sm"}
-          align={"center"}
-          className="mb-4"
-        >
+        </StyledText>
+        <StyledText as="span" emphasis={"low"} size={"sm"} align={"center"}>
           Please enter your credentials to login
-        </Text>
-        <Text
-          as="label"
-          htmlFor="username"
-          size={"sm"}
-          weight={"medium"}
-          className="mb-1.5"
-        >
+        </StyledText>
+        <StyledText as="label" htmlFor="username" size={"sm"} weight={"medium"}>
           Username
-        </Text>
-        <Input
-          type="text"
-          id="username"
-          placeholder="Username"
-          className="mb-4"
-        />
+        </StyledText>
+        <StyledInput type="text" id="username" placeholder="Username" />
 
-        <Text
-          as="label"
-          htmlFor="password"
-          size={"sm"}
-          weight={"medium"}
-          className="mb-1.5"
-        >
+        <StyledText as="label" htmlFor="password" size={"sm"} weight={"medium"}>
           Password
-        </Text>
-        <Input id="password" type="password" placeholder={"Password"} />
-        <Button
-          label="Sign in"
-          size="md"
-          type="submit"
-          variant="primary"
-          className="mt-2"
-        />
+        </StyledText>
+        <StyledInput id="password" type="password" placeholder={"Password"} />
+        <StyledButton size="md" type="submit" variant="primary">
+          Sign in
+        </StyledButton>
       </Stack>
-    </form>
+    </StyledForm>
   );
 };

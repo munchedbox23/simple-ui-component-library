@@ -13,7 +13,7 @@ const meta: Meta<typeof Text> = {
       type: "string",
       description: "Варианты размера текста",
       defaultValue: "base",
-      options: ["base", "sm", "lg", "xl", "2xl", "3xl"],
+      options: ["sm", "base", "lg", "xl", "2xl", "3xl"],
       control: {
         type: "select",
       },
@@ -37,11 +37,28 @@ const meta: Meta<typeof Text> = {
       },
     },
     underline: {
-      type: "string",
+      type: "boolean",
       description: "Возможность добавлять нижний элемент",
-      defaultValue: "false",
+      defaultValue: false,
       control: {
         type: "boolean",
+      },
+    },
+    italic: {
+      type: "boolean",
+      description: "Возможность сделать текст курсивом",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+    },
+    emphasis: {
+      type: "string",
+      description: "Варианты акцента текста",
+      defaultValue: undefined,
+      options: ["low"],
+      control: {
+        type: "select",
       },
     },
   },

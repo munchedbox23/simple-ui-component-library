@@ -8,58 +8,43 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "@mui/icons-material";
-import { motion } from "framer-motion";
-import { cva } from "class-variance-authority";
-import cn from "classnames";
+import styled from "styled-components";
 
 type TTableProps<D extends object = {}> = {
   columns: Column<D>[];
   data: D[];
 };
 
-const tableStyles = cva("table-auto w-full", {
-  variants: {
-    variant: {
-      default: "border-collapse border border-gray-300",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+const TableContainer = styled.div`
+  overflow-x: auto;
+`;
 
-const thStyles = cva("px-4 py-2 text-left", {
-  variants: {
-    variant: {
-      default: "bg-gray-200",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+const TableElement = styled.table`
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #d1d5db;
+`;
 
-const tdStyles = cva("px-4 py-2 border-t border-gray-300", {
-  variants: {
-    variant: {
-      default: "",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+const ThElement = styled.th`
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background-color: #e5e7eb;
+`;
 
-const paginationStyles = cva("flex items-center justify-between mt-4", {
-  variants: {
-    variant: {
-      default: "bg-gray-100 p-4",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+const TdElement = styled.td`
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #d1d5db;
+`;
+
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f3f4f6;
+`;
 
 export const Table: FC<TTableProps> = ({ columns, data }) => {
   const {
@@ -89,8 +74,8 @@ export const Table: FC<TTableProps> = ({ columns, data }) => {
 
   return (
     <>
-      <motion.div className="overflow-x-auto">
-        <table {...getTableProps()} className={cn(tableStyles())}>
+      <TableContainer>
+        <TableElement {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup, i) => (
               <tr
@@ -98,14 +83,13 @@ export const Table: FC<TTableProps> = ({ columns, data }) => {
                 key={`header-group-${i}`}
               >
                 {headerGroup.headers.map((column, j) => (
-                  <th
+                  <ThElement
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={`header-${i}-${j}`}
-                    className={cn(thStyles())}
                   >
                     {column.render("Header")}
                     {column.isSorted && (
-                      <span className="ml-2">
+                      <span style={{ marginLeft: "0.5rem" }}>
                         {column.isSortedDesc ? (
                           <ArrowDropDown />
                         ) : (
@@ -113,7 +97,7 @@ export const Table: FC<TTableProps> = ({ columns, data }) => {
                         )}
                       </span>
                     )}
-                  </th>
+                  </ThElement>
                 ))}
               </tr>
             ))}
@@ -124,21 +108,17 @@ export const Table: FC<TTableProps> = ({ columns, data }) => {
               return (
                 <tr {...row.getRowProps()} key={`row-${i}`}>
                   {row.cells.map((cell, j) => (
-                    <td
-                      {...cell.getCellProps()}
-                      key={`cell-${i}-${j}`}
-                      className={cn(tdStyles())}
-                    >
+                    <TdElement {...cell.getCellProps()} key={`cell-${i}-${j}`}>
                       {cell.render("Cell")}
-                    </td>
+                    </TdElement>
                   ))}
                 </tr>
               );
             })}
           </tbody>
-        </table>
-      </motion.div>
-      <div className={cn(paginationStyles())}>
+        </TableElement>
+      </TableContainer>
+      <PaginationContainer>
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           <FirstPage />
         </button>
@@ -182,7 +162,7 @@ export const Table: FC<TTableProps> = ({ columns, data }) => {
             </option>
           ))}
         </select>
-      </div>
+      </PaginationContainer>
     </>
   );
 };

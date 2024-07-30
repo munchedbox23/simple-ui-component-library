@@ -32,7 +32,7 @@ describe("Button component", () => {
     );
     const buttonElement = screen.getByText(/Click me/i);
     expect(buttonElement).toHaveStyle(
-      "border: 2px solid #007ac0; color: #0ea5e9; background-color: white;"
+      "border: 2px solid #0055cc; color: #0ea5e9; background-color: white;"
     );
   });
 
@@ -67,7 +67,7 @@ describe("Button component", () => {
       </Button>
     );
     const buttonElement = screen.getByText(/Click me/i);
-    expect(buttonElement).toHaveStyle("padding: 1rem 2rem; font-size: 1rem;");
+    expect(buttonElement).toHaveStyle("padding: 1rem 1.5rem; font-size: 1rem;");
   });
 
   it("renders with large size", () => {
@@ -78,7 +78,7 @@ describe("Button component", () => {
     );
     const buttonElement = screen.getByText(/Click me/i);
     expect(buttonElement).toHaveStyle(
-      "padding: 1.5rem 3rem; font-size: 1.125rem;"
+      "padding: 1.2rem 2rem; font-size: 1.125rem;"
     );
   });
 

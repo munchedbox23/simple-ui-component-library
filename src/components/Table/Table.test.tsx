@@ -37,4 +37,15 @@ describe("Table component", () => {
     expect(rows[1]).toHaveTextContent("John");
     expect(rows[2]).toHaveTextContent("Jane");
   });
+
+  it("changes page size correctly", () => {
+    const largeData = Array.from({ length: 50 }, (_, i) => ({
+      name: `User ${i + 1}`,
+      age: (i + 1) * 2,
+    }));
+
+    render(<Table columns={columns} data={largeData} />);
+    fireEvent.change(screen.getByRole("combobox"), { target: { value: 20 } });
+    expect(screen.getAllByRole("row")).toHaveLength(21);
+  });
 });

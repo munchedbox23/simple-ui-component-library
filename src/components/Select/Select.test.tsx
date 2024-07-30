@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import CustomSelect from "./Select"; // Убедитесь, что путь к компоненту правильный
+import CustomSelect from "./Select";
 import "@testing-library/jest-dom";
 
 describe("Custom select", () => {

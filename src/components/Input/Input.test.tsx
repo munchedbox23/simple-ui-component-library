@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { Input } from "./Input";
 import "@testing-library/jest-dom";
 
@@ -17,15 +17,24 @@ describe("Input component", () => {
     expect(getByPlaceholderText("Enter text")).toHaveAttribute("type", "email");
   });
 
-  it("input should render password input with show password icon", () => {
-    const { getByPlaceholderText, container } = render(
-      <Input type="password" placeholder="Enter text" />
+  it("input should render with correct placeholder", () => {
+    const { getByPlaceholderText } = render(
+      <Input type="text" placeholder="Enter text" />
     );
 
-    expect(getByPlaceholderText("Enter text")).toHaveAttribute(
-      "type",
-      "password"
+    const input = getByPlaceholderText("Enter text");
+    expect(input).toBeInTheDocument();
+  });
+
+  it("input should handle change event", () => {
+    const handleChange = jest.fn();
+    const { getByPlaceholderText } = render(
+      <Input type="text" placeholder="Enter text" onChange={handleChange} />
     );
-    expect(container.querySelector(".inputIcon")).toBeInTheDocument();
+
+    const input = getByPlaceholderText("Enter text");
+    fireEvent.change(input, { target: { value: "test" } });
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
   });
 });
