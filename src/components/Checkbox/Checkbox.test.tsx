@@ -1,6 +1,5 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 import { Checkbox } from "./Checkbox";
-import "@testing-library/jest-dom";
 
 describe("Checkbox component", () => {
   it("checkbox should render correctly with label", () => {

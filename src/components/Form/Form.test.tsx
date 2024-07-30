@@ -1,6 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import { Form } from "./Form";
-import "@testing-library/jest-dom";
 
 describe("Form component", () => {
   it("form should render correctly", () => {

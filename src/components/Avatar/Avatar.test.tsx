@@ -1,6 +1,5 @@
 import { screen, render } from "@testing-library/react";
 import { Avatar } from "./Avatar";
-import "@testing-library/jest-dom";
 
 const src = "https://example.com/avatar.jpg";
 

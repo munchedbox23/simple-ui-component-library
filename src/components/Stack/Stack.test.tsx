@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { Stack, MStack } from "./Stack";
-import "@testing-library/jest-dom";
 
 describe("Stack", () => {
   it("renders with default props", () => {

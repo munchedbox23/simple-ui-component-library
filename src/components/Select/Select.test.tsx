@@ -1,6 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import CustomSelect from "./Select";
-import "@testing-library/jest-dom";
 
 describe("Custom select", () => {
   const options = ["Option 1", "Option 2", "Option 3"];

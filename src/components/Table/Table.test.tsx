@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Table } from "./Table";
-import "@testing-library/jest-dom";
 
 const columns = [
   { Header: "Name", accessor: "name" },
