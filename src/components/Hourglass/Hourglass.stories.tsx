@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Hourglass } from "./Hourglass";
 
 const meta: Meta<typeof Hourglass> = {
@@ -18,7 +18,7 @@ const meta: Meta<typeof Hourglass> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Hourglass>;
+type Story = StoryObj<typeof meta>;
 
 export const Small: Story = {
   args: {

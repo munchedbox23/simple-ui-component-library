@@ -38,15 +38,27 @@ const meta: Meta<typeof Stack> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Stack>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
     children: (
       <>
-        <div className="bg-blue-500 p-2">Item 1</div>
-        <div className="bg-blue-500 p-2">Item 2</div>
-        <div className="bg-blue-500 p-2">Item 3</div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 1
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 2
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 3
+        </div>
       </>
     ),
     spacing: "md",
@@ -60,9 +72,21 @@ export const RowStack: Story = {
   args: {
     children: (
       <>
-        <div className="bg-blue-500 p-2">Item 1</div>
-        <div className="bg-blue-500 p-2">Item 2</div>
-        <div className="bg-blue-500 p-2">Item 3</div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 1
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 2
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 3
+        </div>
       </>
     ),
     spacing: "md",
@@ -76,9 +100,21 @@ export const CenteredStack: Story = {
   args: {
     children: (
       <>
-        <div className="bg-blue-500 p-2">Item 1</div>
-        <div className="bg-blue-500 p-2">Item 2</div>
-        <div className="bg-blue-500 p-2">Item 3</div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 1
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 2
+        </div>
+        <div
+          style={{ backgroundColor: "blue", color: "white", padding: "8px" }}
+        >
+          Item 3
+        </div>
       </>
     ),
     spacing: "lg",

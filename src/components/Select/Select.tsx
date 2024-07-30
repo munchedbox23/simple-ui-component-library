@@ -6,33 +6,36 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { cva } from "class-variance-authority";
-import cn from "classnames";
+import styled from "styled-components";
 
 interface CustomSelectProps {
   options: (string | number)[];
   label: string;
-  onChange: (value: string[]) => void;
+  onChange: (event: SelectChangeEvent<string[]>) => void;
   value: string[];
   size?: "sm" | "md" | "lg";
   width?: number;
 }
 
-const selectStyles = cva(
-  "w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
-  {
-    variants: {
-      size: {
-        sm: "max-w-xs",
-        md: "max-w-sm",
-        lg: "max-w-md",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
+const sizeStyles = {
+  sm: "max-width: 20rem;",
+  md: "max-width: 24rem;",
+  lg: "max-width: 28rem;",
+};
+
+const StyledFormControl = styled(FormControl)<{ size: "sm" | "md" | "lg" }>`
+  width: 100%;
+  ${({ size }) => sizeStyles[size]}
+`;
+
+const StyledSelect = styled(Select)<{ size: "sm" | "md" | "lg" }>`
+  height: 2.25rem;
+  border-radius: 0.375rem;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 1);
   }
-);
+`;
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
@@ -47,15 +50,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
-  const handleChange = (event: SelectChangeEvent<typeof value>) => {
-    const {
-      target: { value },
-    } = event;
-    onChange(typeof value === "string" ? value.split(",") : value);
-  };
-
   return (
-    <FormControl sx={{ width: width }}>
+    <StyledFormControl size={size} sx={{ width: width }}>
       <InputLabel
         id="custom-select-label"
         shrink={value.length > 0 || isFocused}
@@ -69,12 +65,17 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       >
         {label}
       </InputLabel>
-      <Select
+      <StyledSelect
         labelId="custom-select-label"
         id="custom-select"
         multiple
         value={value}
-        onChange={handleChange}
+        onChange={
+          onChange as (
+            event: SelectChangeEvent<unknown>,
+            child: React.ReactNode
+          ) => void
+        }
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         input={<OutlinedInput label={label} />}
@@ -87,15 +88,15 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
             },
           },
         }}
-        className={cn(selectStyles({ size }), "h-9")}
+        size={size}
       >
         {options.map((option) => (
           <MenuItem key={option} value={option} sx={{ minWidth: 150 }}>
             {option}
           </MenuItem>
         ))}
-      </Select>
-    </FormControl>
+      </StyledSelect>
+    </StyledFormControl>
   );
 };
 

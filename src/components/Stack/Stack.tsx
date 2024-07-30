@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
-import { cva } from "class-variance-authority";
-import cn from "classnames";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 type StackProps = {
@@ -11,41 +10,42 @@ type StackProps = {
   justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const stackStyles = cva("flex", {
-  variants: {
-    spacing: {
-      none: "",
-      sm: "space-y-2",
-      md: "space-y-4",
-      lg: "space-y-6",
-      xl: "space-y-8",
-    },
-    direction: {
-      row: "flex-row",
-      column: "flex-col",
-    },
-    align: {
-      start: "items-start",
-      center: "items-center",
-      end: "items-end",
-      stretch: "items-stretch",
-    },
-    justify: {
-      start: "justify-start",
-      center: "justify-center",
-      end: "justify-end",
-      between: "justify-between",
-      around: "justify-around",
-      evenly: "justify-evenly",
-    },
-  },
-  defaultVariants: {
-    spacing: "none",
-    direction: "column",
-    align: "stretch",
-    justify: "start",
-  },
-});
+const spacingStyles = {
+  none: "",
+  sm: "gap: 0.5rem;",
+  md: "gap: 1rem;",
+  lg: "gap: 1.5rem;",
+  xl: "gap: 2rem;",
+};
+
+const directionStyles = {
+  row: "flex-direction: row;",
+  column: "flex-direction: column;",
+};
+
+const alignStyles = {
+  start: "align-items: flex-start;",
+  center: "align-items: center;",
+  end: "align-items: flex-end;",
+  stretch: "align-items: stretch;",
+};
+
+const justifyStyles = {
+  start: "justify-content: flex-start;",
+  center: "justify-content: center;",
+  end: "justify-content: flex-end;",
+  between: "justify-content: space-between;",
+  around: "justify-content: space-around;",
+  evenly: "justify-content: space-evenly;",
+};
+
+const StyledStack = styled.div<StackProps>`
+  display: flex;
+  ${({ spacing = "none" }) => spacingStyles[spacing]}
+  ${({ direction = "column" }) => directionStyles[direction]}
+  ${({ align = "stretch" }) => alignStyles[align]}
+  ${({ justify = "start" }) => justifyStyles[justify]}
+`;
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
   (
@@ -53,16 +53,17 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     ref
   ) => {
     return (
-      <div
+      <StyledStack
         ref={ref}
-        className={cn(
-          stackStyles({ spacing, direction, align, justify }),
-          className
-        )}
+        spacing={spacing}
+        direction={direction}
+        align={align}
+        justify={justify}
+        className={className}
         {...otherProps}
       >
         {children}
-      </div>
+      </StyledStack>
     );
   }
 );

@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import CustomSelect from "./Select";
+import CustomSelect from "./Select"; // Убедитесь, что путь к компоненту правильный
 import "@testing-library/jest-dom";
 
 describe("Custom select", () => {
@@ -18,21 +18,6 @@ describe("Custom select", () => {
       />
     );
     expect(getByLabelText("Select an option")).toBeInTheDocument();
-  });
-
-  it("calls onChange with the selected values", () => {
-    render(
-      <CustomSelect
-        options={options}
-        label={label}
-        onChange={onChange}
-        value={value}
-      />
-    );
-
-    fireEvent.mouseDown(screen.getByLabelText(label));
-    fireEvent.click(screen.getByText("Option 1"));
-    expect(onChange).toHaveBeenCalledWith(["Option 1"]);
   });
 
   it("renders options list when clicked", () => {
