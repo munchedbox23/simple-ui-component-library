@@ -1,0 +1,6 @@
+import{T as r}from"./Table-C9_kKVQ-.js";import"./jsx-runtime-Cw0GR0a5.js";import"./index-CTjT7uj6.js";import"./styled-components.browser.esm-CkoGXpq8.js";import"./createSvgIcon-COlC2yWg.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-eabiwY80.js";const d={title:"Components/Table",component:r,parameters:{layout:"centered"},tags:["autodocs"],argTypes:{columns:{control:{type:"object"},description:"Columns configuration for the table"},data:{control:{type:"object"},description:"Data to be displayed in the table"}}},s=[{Header:"Name",accessor:"name"},{Header:"Account",accessor:"account"},{Header:"Email",accessor:"email"},{Header:"Group",accessor:"group"},{Header:"Phone",accessor:"phone"}],n=[{name:"John Doe",account:"johndoe",email:"john.doe@example.com",group:"Group A",phone:"+1234567890"},{name:"Jane Smith",account:"janesmith",email:"jane.smith@example.com",group:"Group B",phone:"+0987654321"}],e={args:{columns:s,data:n}};var o,a,t;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  args: {
+    columns: sampleColumns,
+    data: sampleData
+  }
+}`,...(t=(a=e.parameters)==null?void 0:a.docs)==null?void 0:t.source}}};const h=["Default"];export{e as Default,h as __namedExportsOrder,d as default};
