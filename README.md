@@ -8,7 +8,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/munchedbox-ui"><img src="https://flat.badgen.net/npm/dt/munchedbox-ui" alt="NPM" /></a>
   <a href="https://www.npmjs.com/package/munchedbox-ui"><img src="https://flat.badgen.net/npm/v/munchedbox-ui"/></a>
-  <a href="https://t.me/munchedbox"><img src="https://github.com/badges/shields/assets/10694593/c5c5acc3-f434-4a8d-a834-6d94a7ffb45a" alt="" /></a>
+  <a href="https://t.me/munchedbox"><img width="22" height="22" src="https://github.com/badges/shields/assets/10694593/c5c5acc3-f434-4a8d-a834-6d94a7ffb45a" alt="" /></a>
 </p>
 
 # 👋 Welcome
