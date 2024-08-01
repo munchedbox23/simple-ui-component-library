@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta
+  title="Docs/Getting Started"
+  parameters={{
+    layout: "centered",
+  }}
+/>
+
+# Installation
+
+MunchedboxUI is available as an [npm package](https://www.npmjs.com/package/munchedbox-ui).
+
+## npm
+
+To get started with our component library, simply install it via npm or yarn:
+
+```bash
+npm i munchedbox-ui
+```
+
+In order to have `munchedbox-ui` working properly, you'll also need
+[styled-components 💅](https://github.com/styled-components/styled-components),
+this way you can use custom themes and get the best of the library.
+
+## Usage
+
+Import the component and start using the library
+
+```bash
+
+import { Button, Input } from "munchedbox-ui";
+
+const ExampleComponent = () => {
+  return (
+    <div>
+      <Button variant="primary" size="md" type="button">Click me</Button>
+      <Input
+        autoComplete="current-password"
+        type="password"
+        name="password"
+        placeholder="Enter your password"
+        value={value}
+        onChange={onChange}
+        variant="rounded"
+      />
+    </div>
+  );
+};
+```
+
+## Contact
+
+> GitHub [@munchedbox](https://github.com/munchedbox23) &nbsp;&middot;&nbsp;
+> Telegram [@munchedbox](https://t.me/munchedbox)
